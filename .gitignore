@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local scripts
+git-commit-tr.ps1
+
+# Local documentation
+Yapılan_Islemler.md
