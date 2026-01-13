@@ -1,97 +1,248 @@
+/* CSS Variables - Renkler tanımlandı */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --color-yellow: #FDC913;
+  --color-light-gray: #5F5F5F;
+  --color-dark-gray: #292929;
+  --color-red: #CE2829;
+  --color-beige: #FAF7F2;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Reset ve temel stiller eklendi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.5;
+  color: var(--color-dark-gray);
+  background-color: #ffffff;
+}
+
+/* Header Section stilleri eklendi */
+.header-section {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
+  background-color: var(--color-red);
+  background-image: url('/assets/iteration-1/home-banner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Header Logo stilleri eklendi */
+.header-logo {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.header-logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Header Content stilleri eklendi */
+.header-content {
+  position: relative;
+  z-index: 10;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 8rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* Header Subtitle stilleri eklendi */
+.header-subtitle {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.25rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: var(--color-yellow);
+  margin: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Header Headline stilleri eklendi */
+.header-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.header-headline-main {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.header-headline-sub {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Header Button stilleri eklendi */
+.header-button {
+  display: inline-block;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-dark-gray);
+  background-color: var(--color-yellow);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.header-button:hover {
+  background-color: #ffd633;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-button:active {
+  transform: translateY(0);
+}
+
+/* Category Navigation stilleri eklendi */
+.category-nav {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.category-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 2rem;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.category-list::-webkit-scrollbar {
+  display: none; 
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-3px);
+}
+
+.category-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.category-text {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-dark-gray);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Responsive tasarım eklendi */
+@media (max-width: 768px) {
+  .header-logo {
+    top: 1rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .header-logo img {
+    max-width: 200px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .header-content {
+    margin-top: 6rem;
+    gap: 1rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+  }
+
+  .header-headline-main {
+    font-size: 2.5rem;
+  }
+
+  .header-headline-sub {
+    font-size: 2rem;
+  }
+
+  .header-button {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+  }
+
+  .category-list {
+    padding: 0 1rem;
+    gap: 0.75rem;
+  }
+
+  .category-item {
+    min-width: 70px;
+  }
+
+  .category-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-headline-main {
+    font-size: 2rem;
+  }
+
+  .header-headline-sub {
+    font-size: 1.5rem;
+  }
+
+  .category-list {
+    justify-content: flex-start;
   }
 }
