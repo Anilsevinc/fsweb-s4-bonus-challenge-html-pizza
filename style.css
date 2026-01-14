@@ -337,6 +337,10 @@ body {
   margin: 0;
 }
 
+.offer-card-large .offer-card-title br {
+  display: none;
+}
+
 .offer-card-small:last-of-type .offer-card-title {
   color: var(--color-dark-gray);
 }
@@ -964,7 +968,7 @@ body {
     width: 100%;
     max-width: 280px;
     padding: 0 16px;
-    margin-top: 90px;
+    margin-top: 120px;
     gap: 20px;
     position: relative;
     display: flex;
@@ -1055,8 +1059,8 @@ body {
     padding: 0 1rem;
     align-items: start;
     max-width: 400px;
-    margin-left: auto;
-    margin-right: 0.5rem;
+    margin-left: 8rem;
+    margin-right: 1rem;
   }
 
   .category-item {
@@ -1079,5 +1083,219 @@ body {
     font-size: 0.875rem;
     white-space: nowrap;
     text-align: left;
+  }
+
+  /* Special Offers Section responsive stilleri eklendi */
+  .special-offers {
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .offer-card-large {
+    width: 100%;
+    max-width: 422px;
+    height: 336px;
+    flex-direction: row;
+    background-image: url('/assets/iteration-2/cta/kart-1.png');
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 44px 49px;
+    margin: 0 auto;
+  }
+
+  .offer-cards-right {
+    width: 100%;
+    max-width: 422px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+  }
+
+  .offer-card-small {
+    width: 100%;
+    max-width: 422px;
+    height: 270px;
+    flex-direction: row;
+    padding: 32px;
+    position: relative;
+  }
+
+  .offer-card-dark {
+    background-image: url('/assets/iteration-2/cta/kart-2.png');
+    background-size: auto 118px;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+
+  .offer-card-beige {
+    background-image: url('/assets/iteration-2/pictures/beige-card-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .offer-card-beige .offer-card-image {
+    display: block;
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%) scale(1.7);
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    z-index: 3;
+  }
+
+  .offer-card-beige .offer-card-image img {
+    width: 220px;
+    height: 227px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Desktop'taki absolute positioning'i responsive'de kaldır */
+  .offer-card-large .offer-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: auto;
+    left: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  .offer-card-large .offer-card-title {
+    position: relative;
+    width: auto;
+    height: auto;
+    top: auto;
+    left: auto;
+    font-family: 'Quattrocento', serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 68px;
+    line-height: 72px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    margin-bottom: 0.5rem;
+    white-space: normal;
+  }
+
+  .offer-card-large .offer-card-title br {
+    display: block;
+  }
+
+  .offer-card-large .offer-card-subtitle {
+    position: relative;
+    width: 275px;
+    height: 27px;
+    top: auto;
+    left: -10px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 26.76px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    margin-bottom: 1rem;
+  }
+
+  .offer-card-large .offer-card-button {
+    position: relative;
+    width: auto;
+    height: auto;
+    top: auto;
+    left: auto;
+    padding: 0.75rem 1.5rem;
+    margin: 0;
+    display: inline-block;
+  }
+
+  .offer-card-large .offer-card-image {
+    display: none;
+  }
+
+  .offer-card-small .offer-card-content {
+    width: 100%;
+    padding: 45px 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    position: relative;
+  }
+
+  .offer-card-small .offer-card-image {
+    display: none;
+  }
+
+  .offer-card-beige .offer-card-image {
+    display: block;
+  }
+
+  .offer-card-beige .offer-card-content {
+    width: 100%;
+    padding: 0.47px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    position: relative;
+  }
+
+  .offer-card-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .offer-card-beige .offer-card-title {
+    width: 254px;
+    height: 88px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 44.27px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    align-self: flex-start;
+  }
+
+  .offer-card-dark .offer-card-title {
+    width: 182.3450927734375px;
+    height: 86px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 44.27px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    align-self: flex-start;
+  }
+
+  .offer-card-dark .offer-card-title br {
+    display: block;
   }
 }
