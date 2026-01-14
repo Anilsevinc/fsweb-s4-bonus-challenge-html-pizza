@@ -1,83 +1,143 @@
-# Pizza Sipariş Formu - Tasarımdan Koda I
+## Teknolojik Yemekler – Pizza Landing Page
 
-Bu proje, Workintech Full Stack Web Geliştirme eğitimindeki S8 sunuma hazırlık olarak, HTML ve CSS becerilerini geliştirmeniz için tasarlanmıştır. Bu projede, sadece HTML ve CSS kullanarak verilen tasarımı aynen uygulamanız beklenmektedir. Figma tasarım dosyasını referans alarak, sayfanızın görsel yapısını oluşturun.
+Bu proje, **Teknolojik Yemekler** markası için hazırlanmış; tamamen HTML ve CSS ile kodlanmış, tek sayfalık bir pizza & fast food tanıtım sitesidir.  
+Odak noktası; tasarım dosyasına sadık kalarak hem masaüstü hem de mobil cihazlarda şık ve tutarlı bir kullanıcı arayüzü sunmaktır.
 
-**Amaç:**
+---
 
-- Verilen Figma tasarımına birebir uyan, mobil ve desktop uyumlu statik bir HTML yapısı oluşturmak.
-- CSS kullanarak formu ve sayfayı şekillendirmek.
-- JavaScript kullanmadan temel bir form yapısı oluşturmak.
+## İçerik
+- [Özellikler](#özellikler)
+- [Teknolojiler](#teknolojiler)
+- [Proje Yapısı](#proje-yapısı)
+- [Çalıştırma](#çalıştırma)
+- [Responsive Davranış](#responsive-davranış)
+- [Kod Tarzı ve Alınan Kararlar](#kod-tarzı-ve-alınan-kararlar)
 
-**Gereksinimler:**
+---
 
-- Visual Studio Code
-- Node.js ve npm (Node Package Manager) bilgisayarınızda kurulu olmalıdır. Eğer kurulu değilse, [Node.js resmi web sitesinden](https://nodejs.org) LTS versiyonunu indirebilirsiniz.
+## Özellikler
 
-**Başlangıç:**
+- **Statik Single Page Tasarım**
+  - Üstte tam ekran **header** (arka planda pizza görseli, “KOD ACIKTIRIR / PIZZA, DOYURUR” başlığı ve “Acıktım” CTA butonu).
+  - Header altında **kategori nav bar** (pizza, burger, kızartmalar vb. ikonlu menü).
+  - **Special Offers / Kampanyalar** bölümü:
+    - Büyük kırmızı kart – “Özel Lezzetus” kampanyası.
+    - Sağda iki küçük kart – “Hackathlon Burger Menü” ve “Çoooook hızlı npm gibi kurye”,
+      ikincisinde **iki katmanlı görsel yapı** (arka plan + overlay kurye illüstrasyonu).
+  - **En Çok Paketlenen Menüler** başlığı, altına sıralanmış ürün kartları.
+  - **Footer**: logo, iletişim bilgileri, hot menu listesi, Instagram grid’i ve alt barda copyright + Twitter ikonu.
 
-1. **Create Repo From Template & Clone:**
+- **Responsive Tasarım (max-width: 600px breakpoint’i)**  
+  Masaüstü tasarımını bozmadan, 600px ve altı ekranlarda şu düzenlemeler yapılmıştır:
+  - Header için özel mobil arka plan (`responsive-pizza.png`) ve hizalamalar.
+  - Category nav 2 sütunlu yapıya geçer (ikon + metinler hizalı kalır).
+  - Kampanya kartları ve ürün kartları dikey dizilime geçer.
+  - Footer tamamen dikey kolon yapısına döner.
 
-   - Sağ üstteki yeşil "Use this template" butonu ile, bir kopya oluşturun. işlemi tamamlandıktan sonra, kendi GitHub hesabınızda yer alan depo bağlantısını kopyalayın.
-   - VS Code'u açın ve terminali başlatın. Aşağıdaki komutu kullanarak depoyu bilgisayarınıza klonlayın:
-     ```sh
-     git clone <Yeni-Repo-URL'niz>
+- **Taşma Kontrolleri ve Container Mantığı**
+  - Ana bölümler için `width: 100% + max-width` yaklaşımı kullanıldı
+    (ör. `max-width: 1068px`, `max-width: 1296px` vb.).
+  - Kenar boşlukları için sabit `padding: 0 2rem` yerine
+    `padding: 0 clamp(1rem, 4vw, 2rem)` gibi formüllerle
+    **desktop görünümü korunurken**, dar ekranda yumuşak küçülme sağlandı.
+
+---
+
+## Teknolojiler
+
+- **HTML5**
+- **CSS3**
+  - Flexbox
+  - CSS Grid (bazı responsive layout’larda)
+  - Media Queries (`@media (max-width: 600px)`)
+  - `clamp()` ile uyumlu padding ayarları
+
+---
+
+## Proje Yapısı
+
+- `index.html`  
+  Sayfanın tüm HTML yapısı:
+  - `header.header-section` – hero alanı
+  - `nav.category-nav` – kategori menüsü
+  - `section.special-offers` – kampanya kartları
+  - `section.product-section-header` – ürün bölüm başlığı
+  - `nav.category-tabs` – menü filtre sekmeleri (statik)
+  - `section.product-cards-section` – ürün kartları
+  - `footer.footer-section` – üç sütunlu footer + alt footer
+
+- `style.css`  
+  Tüm stil tanımları tek dosyada:
+  - En üstte **CSS değişkenleri** (`:root` – renk paleti).
+  - Global reset (`* { margin:0; padding:0; box-sizing:border-box; }`).
+  - Masaüstü stilleri (header, nav, kartlar, footer).
+  - En altta `@media (max-width: 600px)` içinde mobil düzenlemeler.
+
+- `public/assets/...`  
+  - `iteration-1` – header banner ve logo.
+  - `iteration-2/cta` – kampanya kartlarına ait görseller.
+  - `iteration-2/icons` – kategori ikonları.
+  - `iteration-2/pictures` – responsive header ve özel kart görselleri
+    (`responsive-pizza.png`, `beige-card-1/2.png` vb.).
+  - `iteration-2/footer` – footer ikonları ve Instagram görselleri.
+
+---
+
+## Çalıştırma
+
+1. Repoyu klonla veya indir:
+   ```bash
+   git clone <repo-url>
+   cd fsweb-s4-bonus-challenge-html-pizza
+   ```
+2. `index.html` dosyasını doğrudan tarayıcıda aç.
+    - VS Code kullanıyorsan Live Server ile çalıştır:
+     ```text
+     Sağ tık → “Open with Live Server”
      ```
-   - Örnek:
-     ```sh
-     git clone https://github.com/sizin-hesabiniz/fsweb-s5-bonus-challenge-html-pizza
-     ```
 
-2. **VS Code'da Geliştirmeye Başlamak:**
-   - VS Code'u açın ve `File -> Open Folder` seçeneğiyle projeyi açın.
+Tarayıcıda desktop görünümünü kontrol ettikten sonra, **Geliştirici Araçları → mobil görünüm** (ör. 375×667) ile responsive tasarımı inceleyebilirsin.
 
-- Terminalde aşağıdaki komutları sırasıyla çalıştırarak proje bağımlılıklarını yükleyin ve projeyi başlatın:
-  ```sh
-  npm install
-  npm run dev
+---
+
+## Responsive Davranış
+
+- **Breakpoint:**  
+  Tüm mobil düzenlemeler tek breakpoint altında toplanmıştır:
+  ```css
+  @media (max-width: 600px) { ... }
   ```
 
-3. **Geliştirmeye Başlayın** 🤓 👩‍💻 🧑‍💻
+- **Header:**
+  - Mobilde farklı bir görsel (`responsive-pizza.png`) ve özel hizalamalar kullanılır.
+  - Başlık “KOD ACIKTIRIR / PIZZA, DOYURUR” satırlara bölünerek okunabilirlik artırılır.
 
-#### Proje Yapısı
+- **Kategori Nav (Category List):**
+  - Desktop: yatay flex menü (`justify-content: space-around`, geniş padding).
+  - Mobil: 2 sütunlu, grid tabanlı düzen; `margin: 0 auto` ile tam ortada kalır.
 
-- `index.html`: Ana HTML dosyanız.
-- `style.css`: Tüm stillerinizin bulunduğu CSS dosyası.
-- `assets/`: Projede kullanacağınız tüm resim ve diğer statik dosyalar sizin için önden dışarı aktarıldı.
-- `index.html` dosyasını düzenleyerek HTML yapısını oluşturun.
-- Figma tasarımını ([S6 Pizza v2.1 Mobil](https://www.figma.com/design/B6rGWNjWqVyvuB9htLyIMR/S6-Challange-v2.1?node-id=0-1&t=FwsCbqkh8NWchoPX-1))
--  referans alarak CSS (`style.css`) ile sayfayı ve formu şekillendirin.
+- **Kampanya Kartları:**
+  - Desktop: solda büyük kart, sağda iki küçük kart – yatay align.
+  - Mobil: kartlar dikey dizilir, iç hizalamalar mobil ölçülere göre yeniden konumlandırılır.
 
-#### Renk Kodları
+- **Ürün Kartları ve Footer:**
+  - Desktop: yan yana kartlar / üç sütunlu footer yapısı.
+  - Mobil: her şey dikey stack olacak şekilde yeniden hizalanır.
 
-1. Sarı #FDC913
-2. Açık Gri: #5F5F5F
-3. Koyu Gri #292929
-4. Kırmızı #CE2829
-5. Bej: #FAF7F2
+---
 
-#### Tasarımda Kullanılan Fontlar
+## Kod Tarzı ve Alınan Kararlar
 
-Logo proje klasöründe SVG olarak yüklü
 
-- [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed)
-- [Barlow](https://fonts.google.com/specimen/Barlow)
-- [Quattrocento](https://fonts.google.com/specimen/Quattrocento)
-- [Satisfy](https://fonts.google.com/specimen/Satisfy)
+- **Sabit + Relative Hibrit Yaklaşım:**  
+  - Piksel hassasiyeti gerektiren yerlerde (`height`, bazı `width`ler, tipografi)
+    **px değerleri korunurken**, layout’u yöneten container ve padding’lerde
+    `width: 100% + max-width` ve `clamp()` tercih edildi.
+  - Böylece taslak görseldeki masaüstü görünümü bozulmadan,
+    farklı ekran genişliklerine adaptasyon sağlandı.
 
-**Önemli Notlar:**
+    
 
-- Bu projede JavaScript kullanmayacaksınız. Form işlevsel olmayacak, sadece statik olarak geliştirilecek.
-- Figma tasarımına sadık kalarak mobil ve masaüstü ekranlarda, düzgün dengeli bir görünüm sağlamayı hedefleyin.
-- HTML yapınızın anlamsal (semantic) olmasına özen gösterin.
-- CSS'te class isimlendirmesi ve kod düzenine dikkat edin.
 
-**Kaynaklar:**
 
-- **Figma Tasarımı:** ([S6 Pizza v2.1 Mobil](https://www.figma.com/design/B6rGWNjWqVyvuB9htLyIMR/S6-Challange-v2.1?node-id=0-1&t=FwsCbqkh8NWchoPX-1))
-- **CSS içerisinde değişken tanımlayıp, yeniden kullanabilmek:** [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
 
-## Sorularınız mı Var?
-
-Eğer herhangi bir sorunla karşılaşırsanız, lütfen eğitmeninize başvurun.
-
-İyi eğlenceler ve kodlamalar! 🍕
