@@ -1110,7 +1110,7 @@ body {
     background-size: cover;
     background-position: right center;
     background-repeat: no-repeat;
-    padding: 44px 49px;
+    padding: 44px 49px 44px 30px;
     margin: 0 auto;
   }
 
@@ -1145,6 +1145,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    isolation: isolate;
   }
 
   .offer-card-beige .offer-card-image {
@@ -1165,9 +1166,10 @@ body {
     height: 227px;
     object-fit: contain;
     display: block;
+    mix-blend-mode: screen;
   }
 
-  /* Desktop'taki absolute positioning'i responsive'de kaldır */
+  
   .offer-card-large .offer-card-content {
     position: relative;
     width: 100%;
@@ -1241,6 +1243,10 @@ body {
     justify-content: space-between;
     z-index: 2;
     position: relative;
+  }
+
+  .offer-card-dark .offer-card-content {
+    padding-left: 0px;
   }
 
   .offer-card-small .offer-card-image {
